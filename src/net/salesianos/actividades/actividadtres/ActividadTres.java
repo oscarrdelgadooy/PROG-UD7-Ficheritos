@@ -10,12 +10,18 @@ import java.nio.charset.StandardCharsets;
 
 public class ActividadTres {
     public static void fuseFiles() {
+        readFirstFile();
+        readSecondFile();
+    }
+
+    public static void readFirstFile() {
         try {
+
             File file = new File("hola.txt");
 
-            FileWriter writer = new FileWriter("fusedFiles.txt", StandardCharsets.UTF_8);
+            FileWriter writer = new FileWriter("fusedFiles.txt");
             InputStreamReader inputStream = new InputStreamReader(new FileInputStream(file),
-                    StandardCharsets.UTF_8)
+                    StandardCharsets.UTF_8);
 
             writer.write("- Contenido del fichero Uno: ");
 
@@ -27,12 +33,27 @@ public class ActividadTres {
                 writer.flush();
                 currentCharInt = inputStream.read();
             }
+            writer.close();
+            inputStream.close();
+        } catch (FileNotFoundException fnfe) {
+            System.out.println("El fichero no se encontró.");
+        } catch (IOException ioe) {
+            System.out.println("Error leyendo el fichero.");
+        }
+    }
 
-            file = new File("backup.txt");
+    public static void readSecondFile() {
+        try {
 
-            writer.write("\n- Contenido del fichero Dos:");
+            File file = new File("backup.txt");
 
-            currentCharInt = inputStream.read();
+            FileWriter writer = new FileWriter("fusedFiles.txt", true);
+            InputStreamReader inputStream = new InputStreamReader(new FileInputStream(file),
+                    StandardCharsets.UTF_8);
+
+            writer.write("\n- Contenido del fichero Dos: ");
+
+            int currentCharInt = inputStream.read();
 
             while (currentCharInt != -1) {
                 char character = (char) currentCharInt;
@@ -40,7 +61,6 @@ public class ActividadTres {
                 writer.flush();
                 currentCharInt = inputStream.read();
             }
-
             writer.close();
             inputStream.close();
         } catch (FileNotFoundException fnfe) {

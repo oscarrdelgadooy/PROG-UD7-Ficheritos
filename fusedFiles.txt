@@ -1,2 +1,2 @@
-- Contenido del fichero Uno: HOLA_ADRI,_QUE_GUAPO_ESTAS_HOY,_TQ_COMO_SIEMPRE
-- Contenido del fichero Dos:
+- Contenido del fichero Uno: HOLA_ADRI_QUE_TAL_ESTAS,_GUAPO_COMO_SIEMPRE
+- Contenido del fichero Dos: Hola adri, hoy(siempre) estas radiante y guapo.
