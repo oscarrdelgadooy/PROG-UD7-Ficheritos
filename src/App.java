@@ -13,6 +13,8 @@ public class App {
         ActividadDos.backupTextFromFile();
         ActividadTres.fuseFiles();
 
+        System.out.println("\n"); // Esto es para que se vea bonito el sout, me estaba dando mucho toc como mostraba los objetos.
+
         ArrayList<Mesa> mesitas = new ArrayList<>();
 
         Mesa uno = new Mesa("rojo", 40);
