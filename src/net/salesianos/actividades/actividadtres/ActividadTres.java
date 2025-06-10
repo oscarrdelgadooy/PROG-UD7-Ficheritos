@@ -10,11 +10,39 @@ import java.nio.charset.StandardCharsets;
 
 public class ActividadTres {
     public static void fuseFiles() {
-        readFirstFile();
-        readSecondFile();
+        if (readFirstFile() && readSecondFile()) {
+            try {
+                File file = new File("fusedFiles.txt");
+
+                FileWriter writer = new FileWriter("fusedFiles.txt", true);
+                InputStreamReader inputStream = new InputStreamReader(new FileInputStream(file),
+                        StandardCharsets.UTF_8);
+
+                writer.write("\n\n\n░░░░▄▄▄▄▀▀▀▀▀▀▀▀▄▄▄▄▄▄\n" + //
+                                        "░░░░█░░░░▒▒▒▒▒▒▒▒▒▒▒▒░░▀▀▄\n" + //
+                                        "░░░█░░░▒▒▒▒▒▒░░░░░░░░▒▒▒░░█\n" + //
+                                        "░░█░░░░░░▄██▀▄▄░░░░░▄▄▄░░░█\n" + //
+                                        "░▀▒▄▄▄▒░█▀▀▀▀▄▄█░░░██▄▄█░░░█\n" + //
+                                        "█▒█▒▄░▀▄▄▄▀░░░░░░░░█░░░▒▒▒▒▒█\n" + //
+                                        "█▒█░█▀▄▄░░░░░█▀░░░░▀▄░░▄▀▀▀▄▒█\n" + //
+                                        "░█▀▄░█▄░█▀▄▄░▀░▀▀░▄▄▀░░░░█░░█\n" + //
+                                        "░░█░░▀▄▀█▄▄░█▀▀▀▄▄▄▄▀▀█▀██░█                       FIRMADO POR LA PERSONA MAS GUAPA DEL MUNDO\n" + //
+                                        "░░░█░░██░░▀█▄▄▄█▄▄█▄████░█\n" + //
+                                        "░░░░█░░░▀▀▄░█░░░█░███████░█\n" + //
+                                        "░░░░░▀▄░░░▀▀▄▄▄█▄█▄█▄█▄▀░░█\n" + //
+                                        "░░░░░░░▀▄▄░▒▒▒▒░░░░░░░░░░█\n" + //
+                                        "░░░░░░░░░░▀▀▄▄░▒▒▒▒▒▒▒▒▒▒░█\n" + //
+                                        "░░░░░░░░░░░░░░▀▄▄▄▄▄░░░░░█");
+
+                writer.close();
+                inputStream.close();
+            } catch (IOException ioe) {
+                System.out.println("Error leyendo el fichero.");
+            }
+        }
     }
 
-    public static void readFirstFile() {
+    public static boolean readFirstFile() {
         try {
 
             File file = new File("hola.txt");
@@ -33,16 +61,20 @@ public class ActividadTres {
                 writer.flush();
                 currentCharInt = inputStream.read();
             }
+
             writer.close();
             inputStream.close();
+            return true;
         } catch (FileNotFoundException fnfe) {
             System.out.println("El fichero no se encontró.");
+            return false;
         } catch (IOException ioe) {
             System.out.println("Error leyendo el fichero.");
+            return false;
         }
     }
 
-    public static void readSecondFile() {
+    public static boolean readSecondFile() {
         try {
 
             File file = new File("backup.txt");
@@ -63,10 +95,13 @@ public class ActividadTres {
             }
             writer.close();
             inputStream.close();
+            return true;
         } catch (FileNotFoundException fnfe) {
             System.out.println("El fichero no se encontró.");
+            return false;
         } catch (IOException ioe) {
             System.out.println("Error leyendo el fichero.");
+            return false;
         }
     }
 }
